@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 class AuthService{
-  static const url = "https://0346-2409-4070-4e14-2243-1877-a2d1-5134-a765.ngrok.io";
+  static const url = "https://a597-157-47-92-161.ngrok.io";
   Dio dio = new Dio();
 
   signup(username, password) async {
@@ -11,7 +11,8 @@ class AuthService{
         options: Options(contentType: Headers.formUrlEncodedContentType)
       );
       return response.data;
-    } on DioError catch (_) {
+    } on DioError catch (e) {
+      print(e.toString());
       return {"statusload" : false, "feedback" : "Check Internet Connection"};
     }
   }
