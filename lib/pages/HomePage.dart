@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                 child: Card(
                   color: Colors.white24,
                   child: ListTile(
-                    title: Text(_blogs[index].title),
+                    title: Text(_blogs[index].title,maxLines: 1,),
                     subtitle: Text(_blogs[index].description,maxLines: 1,),
                   ),
                 ),
