@@ -14,9 +14,9 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  final _formKey = GlobalKey<FormState>();
-    bool _hidePassword = true;
     final _storage = new SecureStorage();
+    final _formKey = GlobalKey<FormState>();
+    bool _hidePassword = true;
     bool _requestInProgress = false;
     String username = "";
     String password = "";

@@ -61,10 +61,10 @@ class _HomePageState extends State<HomePage> {
           itemCount: _blogs.length,
           itemBuilder: (context,index){
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
               child: GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => BlogDetail()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => BlogDetail(blog:_blogs[index])));
                 },
                 child: Card(
                   color: Colors.white24,
@@ -81,8 +81,21 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         backgroundColor: Colors.purple.shade900,
-        onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => NewBlog()));
+        onPressed: () async {
+          var result = await Navigator.push(context, MaterialPageRoute(builder: (context) => NewBlog()));
+          if(result['success']){
+            Blog _newblog = new Blog(title: result['blog']['title'], description: result['blog']['description'], creator: result['blog']['creator']);
+            setState(() {
+              _blogs.add(_newblog);
+            });
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                duration: Duration(seconds: 2),
+                content: Text("Blog Added Successfully"),
+                backgroundColor: Colors.purple.shade900,
+              )
+            );
+          }
         },
       ),
     );

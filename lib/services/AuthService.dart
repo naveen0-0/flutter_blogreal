@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 class AuthService{
-  static const url = "https://a597-157-47-92-161.ngrok.io";
+  static const url = "https://6c57-2409-4070-4e14-2243-ad15-496b-30a9-e4c.ngrok.io";
   Dio dio = new Dio();
 
   signup(username, password) async {
